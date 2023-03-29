@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  model: MyString
+  brand: MyString
+  color: MyString
+  price_per_day: MyString
+  address: MyString
+  image: MyString
+  car_type: MyString
+  fuel_type: MyString
+  transmission: MyString
+  drive_type: MyString
+  year: MyString
+  standard_specs: MyString
+  kilometrage: MyString
+  seats: MyString
+
+two:
+  model: MyString
+  brand: MyString
+  color: MyString
+  price_per_day: MyString
+  address: MyString
+  image: MyString
+  car_type: MyString
+  fuel_type: MyString
+  transmission: MyString
+  drive_type: MyString
+  year: MyString
+  standard_specs: MyString
+  kilometrage: MyString
+  seats: MyString

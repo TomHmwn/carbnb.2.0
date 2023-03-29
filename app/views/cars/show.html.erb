@@ -1,0 +1,25 @@
+<div>
+  <%="#{@car.brand}#{@car.model}" %>
+  <%= "#{@car.address}" %>
+
+  <% @car.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, crop: :fill %>
+  <% end %>
+  <div>
+    <h1>Car is owned by <%= "#{@car.user.first_name} #{@car.user.last_name}" %></h1>
+     <%= cl_image_tag @car.user.photo.key, crop: :fill %>
+  </div>
+  <%= "#{@car.car_type}" %>
+  <%= "#{@car.fuel_type}" %>
+  <%= "#{@car.drive_type}" %>
+  <%= "#{@car.transmission}" %>
+  <%= "#{@car.year}" %>
+  <%= "#{@car.kilometrage}" %>
+  <%= "#{@car.seats}" %>
+  <%= "#{@car.standard_specs}" %>
+
+  <%= link_to "Edit", edit_car_path(@car) %>
+
+
+
+</div>

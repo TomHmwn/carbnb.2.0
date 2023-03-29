@@ -1,0 +1,81 @@
+
+<div data-controller="navbar-dropdown" class="fixed top-0 right-0 z-10">
+  <div class="navbar">
+    <%= link_to 'CarBNB', root_path, class:"sm:pl-20 text-xl text-center flex items-center justify-center text-zinc-500 z-10" %>
+
+    <div class="absolute top-2 right-2 flex items-center sm:hidden z-10">
+          <!-- Mobile menu button -->
+          <button data-action="click->navbar-dropdown#toggleDropdown" type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400  hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-zinc-500" >
+            <span class="sr-only">Open main menu</span>
+            <!--
+              Icon when menu is closed.
+
+              Menu open: "hidden", Menu closed: "block"
+            -->
+            <svg data-navbar-dropdown-target="navIcon" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!--
+              Icon when menu is open.
+
+              Menu open: "block", Menu closed: "hidden"
+            -->
+            <svg  data-navbar-dropdown-target="x" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      <div class="hidden sm:flex sm:col-span-11 sm:justify-between sm:px-12 z-10" data-navbar-dropdown-target="links">
+        <div class=" flex items-center sm:space-x-16 sm:pl-8">
+          <% if user_signed_in? %>
+            <%= link_to 'Find your Car', root_path, class:"text-zinc-400" %>
+          <% end %>
+          <%= link_to 'How it works', root_path, class:"text-zinc-400" %>
+          <% unless user_signed_in? %>
+            <%= link_to 'Create an account', new_user_registration_path, class:"text-zinc-400" %>
+            <% end %>
+        </div>
+        <% if current_page?(root_path) %>
+          <% if user_signed_in? %>
+            <%= link_to 'Sign out', destroy_user_session_path, data: {turbo_method: :delete}, class:"sign-in-button text-neutral-100" %>
+          <% else %>
+            <%= link_to 'Sign in', new_user_session_path, class:"sign-in-button text-neutral-100" %>
+          <% end %>
+        <% else %>
+          <% if user_signed_in? %>
+            <%= link_to 'Sign out', destroy_user_session_path, data: {turbo_method: :delete}, class:"sign-in-button text-zinc-500" %>
+          <% else %>
+            <%= link_to 'Sign in', new_user_session_path, class:"sign-in-button text-zinc-500" %>
+          <% end %>
+        <% end %>
+      </div>
+
+  </div>
+      <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="hidden sm:hidden" data-navbar-dropdown-target="menu">
+      <div class=" space-y-4 pt-2 pb-4 px-4 flex flex-col justify-end items-end z-10" data-navbar-dropdown-target="linksDropdown">
+        <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
+
+        <% if user_signed_in? %>
+          <%= link_to 'Find your Car', root_path, class:"text-zinc-400" %>
+        <% end %>
+        <%= link_to 'How it works', root_path, class:"block text-zinc-400 z-10" %>
+        <% unless user_signed_in? %>
+          <%= link_to 'Create an account', new_user_registration_path, class:"text-zinc-400" %>
+          <% end %>
+        <% if current_page?(root_path) %>
+          <% if user_signed_in? %>
+            <%= link_to 'Sign out', destroy_user_session_path, data: {turbo_method: :delete}, class:"sign-in-button text-neutral-100" %>
+          <% else %>
+            <%= link_to 'Sign in', new_user_session_path, class:"sign-in-button text-neutral-100" %>
+          <% end %>
+        <% else %>
+          <% if user_signed_in? %>
+            <%= link_to 'Sign out', destroy_user_session_path, data: {turbo_method: :delete}, class:"sign-in-button text-zinc-500" %>
+          <% else %>
+            <%= link_to 'Sign in', new_user_session_path, class:"sign-in-button text-zinc-500" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+</div>

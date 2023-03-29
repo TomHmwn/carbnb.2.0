@@ -1,0 +1,23 @@
+
+  <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+    <h2 class="sr-only">Products</h2>
+
+    <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      <%@cars.each do |car| %>
+        <%= link_to car_path(car) do%>
+
+            <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+              <% if car.photos.attached? %>
+                <%= cl_image_tag car.photos.first.key, crop: :fill, class:"h-full w-full object-cover object-center group-hover:opacity-75" %>
+              <% else %>
+                <img src="https://st4.depositphotos.com/14953852/22772/v/1600/depositphotos_227725120-stock-illustration-image-available-icon-flat-vector.jpg" alt="no image found", height= "300", width= "400", class="h-full w-full object-cover object-center group-hover:opacity-75">
+              <% end %>
+            </div>
+            <h3 class="mt-4 text-sm text-gray-700"><%="#{car.brand} #{car.model}"%></h3>
+            <p class="mt-1 text-sm text-gray-500"><%= "#{car.address}" %></p>
+            <p class="mt-1 text-lg font-medium text-gray-900"><%="$#{car.price_per_day} per day"%></p>
+        <% end %>
+      <% end %>
+      <!-- More products... -->
+    </div>
+  </div>

@@ -1,0 +1,15 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/* Your CSS partials */
+@import "components/index";
+
+/* Path: app/assets/stylesheets/application.css */
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+ body {
+  @apply font-mono w-screen bg-stone-50;
+ }
